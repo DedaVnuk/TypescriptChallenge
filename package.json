@@ -1,0 +1,23 @@
+{
+  "name": "typescriptchallenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "format": "npx prettier --write .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DedaVnuk/TypescriptChallenge.git"
+  },
+  "author": "Sumarokov Vladimir [sumarokov.world@gmail.com]",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DedaVnuk/TypescriptChallenge/issues"
+  },
+  "homepage": "https://github.com/DedaVnuk/TypescriptChallenge#readme",
+  "dependencies": {
+    "prettier": "^2.8.3"
+  }
+}
