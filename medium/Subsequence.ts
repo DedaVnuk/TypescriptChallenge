@@ -4,17 +4,11 @@
 
 // For example:
 
-type A = Subsequence<[1, 2]> // [] | [1] | [2] | [1, 2]
-type B = Subsequence<[1, 2, 3, 4, 5]>
+type A = Subsequence<[1, 2]>; // [] | [1] | [2] | [1, 2]
+type B = Subsequence<[1, 2, 3, 4, 5]>;
 
-type Shift<
-  Arr extends any[]
-> = Arr extends [...infer F, infer _]
-  ? F
-  : never
+type Shift<Arr extends any[]> = Arr extends [...infer F, infer _] ? F : never;
 
-type Subsequence<
-  Arr extends any[]
-> = {
-  [I in keyof Arr]: [] | [Arr[I]] | Arr | Subsequence<Shift<Arr>>
-}[number]
+type Subsequence<Arr extends any[]> = {
+  [I in keyof Arr]: [] | [Arr[I]] | Arr | Subsequence<Shift<Arr>>;
+}[number];

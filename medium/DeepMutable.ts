@@ -5,40 +5,40 @@
 import { ToPrimitive } from './ToPrimitive';
 
 type X = {
-  readonly a: () => 1
-  readonly b: string
+  readonly a: () => 1;
+  readonly b: string;
   readonly c: {
-    readonly d: boolean
+    readonly d: boolean;
     readonly e: {
       readonly g: {
         readonly h: {
-          readonly i: true
-          readonly j: "s"
-        }
-        readonly k: "hello"
-      }
-    }
-  }
-}
+          readonly i: true;
+          readonly j: 's';
+        };
+        readonly k: 'hello';
+      };
+    };
+  };
+};
 
 type Expected = {
-  a: () => 1
-  b: string
+  a: () => 1;
+  b: string;
   c: {
-    d: boolean
+    d: boolean;
     e: {
       g: {
         h: {
-          i: true
-          j: "s"
-        }
-        k: "hello"
-      }
-    }
-  }
-}
+          i: true;
+          j: 's';
+        };
+        k: 'hello';
+      };
+    };
+  };
+};
 
-type Todo = DeepMutable<X> // should be same as `Expected`
+type Todo = DeepMutable<X>; // should be same as `Expected`
 
 const a: Todo = {
   c: {
@@ -47,16 +47,18 @@ const a: Todo = {
       g: {
         h: {
           i: true,
-          j: 's'
+          j: 's',
         },
-        k: 'hello'
-      }
-    }
+        k: 'hello',
+      },
+    },
   },
   b: 'foo',
   a: () => 1,
-}
+};
 
 type DeepMutable<Obj extends object> = {
-  -readonly [Key in keyof Obj]: Obj[Key] extends object ? DeepMutable<ToPrimitive<Obj[Key]>> : ToPrimitive<Obj[Key]>;
-}
+  -readonly [Key in keyof Obj]: Obj[Key] extends object
+    ? DeepMutable<ToPrimitive<Obj[Key]>>
+    : ToPrimitive<Obj[Key]>;
+};

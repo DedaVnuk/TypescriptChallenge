@@ -4,10 +4,9 @@ import { PlusOne } from '../helpers';
 
 // For example:
 
-type Res1 = LastIndexOf<[1, 2, 3, 2, 1], 2> // 3
-type Res2 = LastIndexOf<[0, 0, 0], 2> // -1
-type Res3 = LastIndexOf<[0, 1, 3, 4, 6, 5, 7], 5> // 5
-
+type Res1 = LastIndexOf<[1, 2, 3, 2, 1], 2>; // 3
+type Res2 = LastIndexOf<[0, 0, 0], 2>; // -1
+type Res3 = LastIndexOf<[0, 1, 3, 4, 6, 5, 7], 5>; // 5
 
 type LastIndexOf<
   Arr extends any[],
@@ -17,5 +16,5 @@ type LastIndexOf<
 > = Arr[I] extends undefined
   ? Index
   : Arr[I] extends T
-    ? LastIndexOf<Arr, T, PlusOne<I>, I>
-    : LastIndexOf<Arr, T, PlusOne<I>, Index>
+  ? LastIndexOf<Arr, T, PlusOne<I>, I>
+  : LastIndexOf<Arr, T, PlusOne<I>, Index>;

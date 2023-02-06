@@ -27,5 +27,6 @@ export type Slice<
   ? Res
   : Slice<Arr, N, [...Res, Arr[I]], PlusOne<I>>;
 
-
-export type IsEqual<A, B> = (<T>() => T extends A ? 1 : 2) extends (<T>() => T extends B ? 1 : 2) ? true : false;
+export type IsEqual<A, B> = (<T>() => T extends A ? 1 : 2) extends <T>() => T extends B ? 1 : 2
+  ? true
+  : false;

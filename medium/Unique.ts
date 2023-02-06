@@ -4,19 +4,20 @@ import { IsEqual } from '../helpers';
 
 type Res = Unique<[1, 1, 2, 2, 3, 3]>; // expected to be [1, 2, 3]
 type Res1 = Unique<[1, 2, 3, 4, 4, 5, 6, 7]>; // expected to be [1, 2, 3, 4, 5, 6, 7]
-type Res2 = Unique<[1, "a", 2, "b", 2, "a"]>; // expected to be [1, "a", 2, "b"]
-type Res3 = Unique<[string, number, 1, "a", 1, string, 2, "b", 2, number]>; // expected to be [string, number, 1, "a", 2, "b"]
+type Res2 = Unique<[1, 'a', 2, 'b', 2, 'a']>; // expected to be [1, "a", 2, "b"]
+type Res3 = Unique<[string, number, 1, 'a', 1, string, 2, 'b', 2, number]>; // expected to be [string, number, 1, "a", 2, "b"]
 type Res4 = Unique<[unknown, unknown, any, any, never, never]>; // expected to be [unknown, any, never]
 
-export type Unique<
-  Arr extends any[],
-  Res extends any[] = []
-> = Arr extends []
+export type Unique<Arr extends any[], Res extends any[] = []> = Arr extends []
   ? Res
   : Arr extends [infer F, ...infer Rest]
-    ? Include<Res, F> extends true
-      ? Unique<Rest, [...Res]>
-      : Unique<Rest, [...Res, F]>
-    : never
+  ? Include<Res, F> extends true
+    ? Unique<Rest, [...Res]>
+    : Unique<Rest, [...Res, F]>
+  : never;
 
-type Include<A, F> = A extends [infer First, ...infer Rest] ? IsEqual<First, F> extends true ? true : Include<Rest, F> : false;
+type Include<A, F> = A extends [infer First, ...infer Rest]
+  ? IsEqual<First, F> extends true
+    ? true
+    : Include<Rest, F>
+  : false;
