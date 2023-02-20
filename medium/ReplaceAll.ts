@@ -4,7 +4,7 @@
 
 type replaced = ReplaceAll<'t y p e s', ' ', ''>; // expected to be 'types'
 
-type ReplaceAll<
+export type ReplaceAll<
   Str extends string,
   N extends string,
   R extends string,

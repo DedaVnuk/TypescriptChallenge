@@ -30,3 +30,17 @@ export type Slice<
 export type IsEqual<A, B> = (<T>() => T extends A ? 1 : 2) extends <T>() => T extends B ? 1 : 2
   ? true
   : false;
+
+export type Func<Args extends any[], Return = void> = (...args: Args) => Return;
+
+export type Split<
+  Str extends string,
+  D extends string = '',
+  Res extends string[] = [],
+> = Str extends ''
+  ? Res
+  : Str extends `${infer F}${D}${infer W}`
+  ? F extends ''
+    ? Split<W, D, [...Res]>
+    : Split<W, D, [...Res, F]>
+  : [...Res, Str];

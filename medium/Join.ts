@@ -5,7 +5,11 @@ type Res1 = Join<['Hello', 'World'], ' '>; // expected to be 'Hello World'
 type Res2 = Join<['2', '2', '2'], 1>; // expected to be '21212'
 type Res3 = Join<['o'], 'u'>; // expected to be 'o'
 
-type Join<Arr extends any[], D extends number | string, Res extends string = ''> = Arr extends []
+export type Join<
+  Arr extends any[],
+  D extends number | string,
+  Res extends string = '',
+> = Arr extends []
   ? Res
   : Arr extends [infer F, ...infer Rest]
   ? Rest extends []
