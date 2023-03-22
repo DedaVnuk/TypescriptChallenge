@@ -11,8 +11,8 @@ export type Join<
   Res extends string = '',
 > = Arr extends []
   ? Res
-  : Arr extends [infer F, ...infer Rest]
+  : Arr extends [infer F extends string | number, ...infer Rest]
   ? Rest extends []
-    ? Join<Rest, D, `${Res}${F & string}`>
-    : Join<Rest, D, `${Res}${F & string}${D}`>
+    ? Join<Rest, D, `${Res}${F}`>
+    : Join<Rest, D, `${Res}${F}${D}`>
   : never;

@@ -13,7 +13,7 @@ type Tuple<Length extends number, Res extends any[] = []> = Res['length'] extend
   ? Res
   : Tuple<Length, [...Res, unknown]>;
 
-type GreaterThan<A extends number, B extends number> = Tuple<A> extends [...infer T, ...Tuple<B>]
+export type GreaterThan<A extends number, B extends number> = Tuple<A> extends [...infer T, ...Tuple<B>]
   ? T['length'] extends 0 | never
     ? false
     : true

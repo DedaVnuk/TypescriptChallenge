@@ -7,7 +7,7 @@ type exp1 = Chunk<[1, 2, 3], 2>; // expected to be [[1, 2], [3]]
 type exp2 = Chunk<[1, 2, 3], 4>; // expected to be [[1, 2, 3]]
 type exp3 = Chunk<[1, 2, 3], 1>; // expected to be [[1], [2], [3]]
 
-type Chunk<Arr extends any[], C extends number, Res extends any[] = []> = Arr extends []
+export type Chunk<Arr extends any[], C extends number, Res extends any[] = []> = Arr extends []
   ? Res
   : Slice<Arr, C> extends infer S
   ? S extends any[]
